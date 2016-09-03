@@ -10,7 +10,13 @@ package CalculatorFrame;
  * @author Ryan
  */
 public class CalcFrame extends javax.swing.JFrame {
-
+    double firstNumber;
+    double secondNumber;
+    double resultDouble;
+    String operand;
+    String resultString;
+    Boolean operandJustSet = false;
+    Boolean decimalUsed = false;
     /**
      * Creates new form CalcFrame
      */
@@ -61,9 +67,19 @@ public class CalcFrame extends javax.swing.JFrame {
 
         dividebutton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         dividebutton.setText("÷");
+        dividebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dividebuttonActionPerformed(evt);
+            }
+        });
 
         percentButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         percentButton.setText("%");
+        percentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percentButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         backButton.setText("←");
@@ -75,51 +91,131 @@ public class CalcFrame extends javax.swing.JFrame {
 
         multiplyButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         multiplyButton.setText("×");
+        multiplyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multiplyButtonActionPerformed(evt);
+            }
+        });
 
         nineButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         nineButton.setText("9");
+        nineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nineButtonActionPerformed(evt);
+            }
+        });
 
         eightButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         eightButton.setText("8");
+        eightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eightButtonActionPerformed(evt);
+            }
+        });
 
         sevenButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         sevenButton.setText("7");
+        sevenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sevenButtonActionPerformed(evt);
+            }
+        });
 
         minusButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         minusButton.setText("-");
+        minusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minusButtonActionPerformed(evt);
+            }
+        });
 
         sixButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         sixButton.setText("6");
+        sixButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sixButtonActionPerformed(evt);
+            }
+        });
 
         fiveButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         fiveButton.setText("5");
+        fiveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fiveButtonActionPerformed(evt);
+            }
+        });
 
         fourButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         fourButton.setText("4");
+        fourButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fourButtonActionPerformed(evt);
+            }
+        });
 
         plusButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         plusButton.setText("+");
+        plusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusButtonActionPerformed(evt);
+            }
+        });
 
         threeButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         threeButton.setText("3");
+        threeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threeButtonActionPerformed(evt);
+            }
+        });
 
         twoButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         twoButton.setText("2");
+        twoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoButtonActionPerformed(evt);
+            }
+        });
 
         oneButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         oneButton.setText("1");
+        oneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oneButtonActionPerformed(evt);
+            }
+        });
 
         equalsButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         equalsButton.setText("=");
+        equalsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                equalsButtonActionPerformed(evt);
+            }
+        });
 
         decimalButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         decimalButton.setText(".");
+        decimalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decimalButtonActionPerformed(evt);
+            }
+        });
 
         zeroButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         zeroButton.setText("0");
+        zeroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zeroButtonActionPerformed(evt);
+            }
+        });
 
         absButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         absButton.setText("±");
+        absButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                absButtonActionPerformed(evt);
+            }
+        });
 
         clearButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         clearButton.setText("C");
@@ -230,6 +326,7 @@ public class CalcFrame extends javax.swing.JFrame {
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         displayPanel.setText("");
+        operandJustSet = false;
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -239,6 +336,216 @@ public class CalcFrame extends javax.swing.JFrame {
             displayPanel.setText(initial);
         }
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void sevenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "7");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "7");
+    }//GEN-LAST:event_sevenButtonActionPerformed
+
+    private void eightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "8");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "8"); 
+    }//GEN-LAST:event_eightButtonActionPerformed
+
+    private void nineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "9");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "9"); 
+    }//GEN-LAST:event_nineButtonActionPerformed
+
+    private void fourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "4");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "4"); 
+    }//GEN-LAST:event_fourButtonActionPerformed
+
+    private void fiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "5");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "5"); 
+    }//GEN-LAST:event_fiveButtonActionPerformed
+
+    private void sixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "6");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "6"); 
+    }//GEN-LAST:event_sixButtonActionPerformed
+
+    private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "1");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "1"); 
+    }//GEN-LAST:event_oneButtonActionPerformed
+
+    private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "2");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "2"); 
+    }//GEN-LAST:event_twoButtonActionPerformed
+
+    private void threeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "3");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "3"); 
+    }//GEN-LAST:event_threeButtonActionPerformed
+
+    private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
+        if (operandJustSet == true){
+            displayPanel.setText("");
+            displayPanel.setText(displayPanel.getText() + "0");
+            operandJustSet = false;
+        }
+        else
+            displayPanel.setText(displayPanel.getText() + "0");
+    }//GEN-LAST:event_zeroButtonActionPerformed
+
+    private void percentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentButtonActionPerformed
+        firstNumber = Double.parseDouble(displayPanel.getText());
+        operand = "%";
+        operandJustSet = true;
+        decimalUsed = false;
+    }//GEN-LAST:event_percentButtonActionPerformed
+
+    private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
+        firstNumber = Double.parseDouble(displayPanel.getText());
+        operand = "+";
+        operandJustSet = true;
+        decimalUsed = false;
+    }//GEN-LAST:event_plusButtonActionPerformed
+
+    private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
+        firstNumber = Double.parseDouble(displayPanel.getText());
+        operand = "-";
+        operandJustSet = true;
+        decimalUsed = false;
+    }//GEN-LAST:event_minusButtonActionPerformed
+
+    private void multiplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyButtonActionPerformed
+        firstNumber = Double.parseDouble(displayPanel.getText());
+        operand = "*";
+        operandJustSet = true;
+        decimalUsed = false;
+    }//GEN-LAST:event_multiplyButtonActionPerformed
+
+    private void dividebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dividebuttonActionPerformed
+        firstNumber = Double.parseDouble(displayPanel.getText());
+        operand = "/";
+        operandJustSet = true;
+        decimalUsed = false;
+    }//GEN-LAST:event_dividebuttonActionPerformed
+
+    private void absButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_absButtonActionPerformed
+        double abs = Double.parseDouble(String.valueOf(displayPanel.getText()));
+        abs = abs * (-1);
+        displayPanel.setText(String.valueOf(abs));
+    }//GEN-LAST:event_absButtonActionPerformed
+
+    private void decimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalButtonActionPerformed
+        String initial = displayPanel.getText();
+        if (decimalUsed.equals(false)){
+            if (initial.equals(null) || "".equals(initial)){
+                if (operandJustSet == true){
+                displayPanel.setText("");
+                displayPanel.setText("0.");
+                operandJustSet = false;
+            }
+                else{
+                  displayPanel.setText("0.");
+                 }
+            }
+             else {
+                 if (operandJustSet == true){
+                displayPanel.setText("");
+                displayPanel.setText(initial + ".");
+                operandJustSet = false;
+            }
+                else{
+                    displayPanel.setText(initial + ".");
+                }
+            }
+            decimalUsed = true;
+        }
+    }//GEN-LAST:event_decimalButtonActionPerformed
+
+    private void equalsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsButtonActionPerformed
+        if (firstNumber != 0.0d){
+            secondNumber = Double.parseDouble(displayPanel.getText());
+        }
+        if (firstNumber != 0.0d && secondNumber != 0.0d){
+            switch (operand){
+                case "+":
+                    resultDouble = firstNumber + secondNumber;
+                    resultString = String.valueOf(resultDouble);
+                    displayPanel.setText(resultString);
+                    break;
+                
+                case "-":
+                    resultDouble = firstNumber - secondNumber;
+                    resultString = String.valueOf(resultDouble);
+                    displayPanel.setText(resultString);
+                    break;
+                
+                case "*":
+                    resultDouble = firstNumber * secondNumber;
+                    resultString = String.valueOf(resultDouble);
+                    displayPanel.setText(resultString);
+                    break;
+                    
+                case "/":
+                    resultDouble = firstNumber / secondNumber;
+                    resultString = String.valueOf(resultDouble);
+                    displayPanel.setText(resultString);
+                    break;
+                    
+                case "%":
+                    resultDouble = (firstNumber / secondNumber) * 100;
+                    resultString = String.valueOf(resultDouble);
+                    displayPanel.setText(resultString);
+                    break;
+            }
+            operandJustSet = false;
+            decimalUsed = false;
+        }
+        
+    }//GEN-LAST:event_equalsButtonActionPerformed
 
     /**
      * @param args the command line arguments
