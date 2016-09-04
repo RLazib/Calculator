@@ -544,7 +544,6 @@ public class CalcFrame extends javax.swing.JFrame {
             operandJustSet = false;
             decimalUsed = false;
         }
-        
     }//GEN-LAST:event_equalsButtonActionPerformed
 
     /**
