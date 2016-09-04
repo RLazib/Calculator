@@ -327,6 +327,7 @@ public class CalcFrame extends javax.swing.JFrame {
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         displayPanel.setText("");
         operandJustSet = false;
+        decimalUsed = false;
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -334,6 +335,9 @@ public class CalcFrame extends javax.swing.JFrame {
         if (initial != null && initial.length() > 0){
             initial = initial.substring(0, initial.length() - 1);
             displayPanel.setText(initial);
+        }
+        else {
+            decimalUsed = false;
         }
     }//GEN-LAST:event_backButtonActionPerformed
 
