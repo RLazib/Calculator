@@ -14,6 +14,8 @@ import CalculatorFrame.CalcFrame;
 /**
  *
  * @author Ryan
+ * I tried to write unit tests, but couldn't find documentation on how to
+ * properly do so for action events such as button presses.
  */
 public class CalcFrameTest {
     

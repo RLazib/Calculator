@@ -15,14 +15,16 @@ public class CalcFrame extends javax.swing.JFrame {
     double resultDouble;
     String operand;
     String resultString;
-    Boolean operandJustSet = false;
-    Boolean decimalUsed = false;
+    Boolean operandJustSet; 
+    Boolean decimalUsed; 
     /**
      * Creates new form CalcFrame
      */
     public CalcFrame() {
         initComponents();
         displayPanel.setEditable(false);
+        operandJustSet = false;
+        decimalUsed = false;
     }
 
     /**
@@ -322,7 +324,7 @@ public class CalcFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void displayPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayPanelActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_displayPanelActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
@@ -443,67 +445,90 @@ public class CalcFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_zeroButtonActionPerformed
 
     private void percentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentButtonActionPerformed
-        firstNumber = Double.parseDouble(displayPanel.getText());
-        operand = "%";
-        operandJustSet = true;
-        decimalUsed = false;
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+            firstNumber = Double.parseDouble(displayPanel.getText());
+            operand = "%";
+            operandJustSet = true;
+            decimalUsed = false;
+        }
     }//GEN-LAST:event_percentButtonActionPerformed
 
     private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
-        firstNumber = Double.parseDouble(displayPanel.getText());
-        operand = "+";
-        operandJustSet = true;
-        decimalUsed = false;
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+           firstNumber = Double.parseDouble(displayPanel.getText());
+            operand = "+";
+            operandJustSet = true;
+            decimalUsed = false; 
+        } 
     }//GEN-LAST:event_plusButtonActionPerformed
 
     private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
-        firstNumber = Double.parseDouble(displayPanel.getText());
-        operand = "-";
-        operandJustSet = true;
-        decimalUsed = false;
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+            firstNumber = Double.parseDouble(displayPanel.getText());
+            operand = "-";
+            operandJustSet = true;
+            decimalUsed = false; 
+        } 
     }//GEN-LAST:event_minusButtonActionPerformed
 
     private void multiplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyButtonActionPerformed
-        firstNumber = Double.parseDouble(displayPanel.getText());
-        operand = "*";
-        operandJustSet = true;
-        decimalUsed = false;
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+            firstNumber = Double.parseDouble(displayPanel.getText());
+            operand = "*";
+            operandJustSet = true;
+            decimalUsed = false;
+        } 
     }//GEN-LAST:event_multiplyButtonActionPerformed
 
     private void dividebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dividebuttonActionPerformed
-        firstNumber = Double.parseDouble(displayPanel.getText());
-        operand = "/";
-        operandJustSet = true;
-        decimalUsed = false;
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+           firstNumber = Double.parseDouble(displayPanel.getText());
+            operand = "/";
+            operandJustSet = true;
+            decimalUsed = false; 
+        } 
     }//GEN-LAST:event_dividebuttonActionPerformed
 
     private void absButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_absButtonActionPerformed
-        double abs = Double.parseDouble(String.valueOf(displayPanel.getText()));
-        abs = abs * (-1);
-        displayPanel.setText(String.valueOf(abs));
+        String initial = displayPanel.getText();
+        if (!("".equals(initial))){
+            double abs = Double.parseDouble(String.valueOf(displayPanel.getText()));
+            abs = abs * (-1);
+            displayPanel.setText(String.valueOf(abs));  
+        } 
     }//GEN-LAST:event_absButtonActionPerformed
 
+    //Commented lines kept in case current refactor broke something I haven't
+    //realized yet
     private void decimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalButtonActionPerformed
         String initial = displayPanel.getText();
-        if (decimalUsed.equals(false)){
-            if (initial.equals(null) || "".equals(initial)){
+        if (decimalUsed.equals(false) /**|| !(initial.contains("."))*/){
+            if ("".equals(initial)){
+//                if (operandJustSet == true){
+//                    displayPanel.setText("");
+//                    displayPanel.setText("0.");
+//                    operandJustSet = false;
+//                }
+//                else{
+                        displayPanel.setText("0.");
+//               }
+            }
+            else {
                 if (operandJustSet == true){
-                displayPanel.setText("");
-                displayPanel.setText("0.");
-                operandJustSet = false;
-            }
+//                    displayPanel.setText("");
+//                    displayPanel.setText(initial + ".");
+                    displayPanel.setText("0.");
+                    operandJustSet = false;
+                }
                 else{
-                  displayPanel.setText("0.");
-                 }
-            }
-             else {
-                 if (operandJustSet == true){
-                displayPanel.setText("");
-                displayPanel.setText(initial + ".");
-                operandJustSet = false;
-            }
-                else{
-                    displayPanel.setText(initial + ".");
+                    if (!(initial.contains("."))){
+                        displayPanel.setText(initial + ".");
+                    }
                 }
             }
             decimalUsed = true;
