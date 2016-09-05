@@ -102,6 +102,7 @@ public class CalcFrame extends javax.swing.JFrame {
 
         nineButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         nineButton.setText("9");
+        nineButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nineButtonActionPerformed(evt);
