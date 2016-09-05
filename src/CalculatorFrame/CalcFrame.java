@@ -22,6 +22,7 @@ public class CalcFrame extends javax.swing.JFrame {
      */
     public CalcFrame() {
         initComponents();
+        displayPanel.setEditable(false);
     }
 
     /**
